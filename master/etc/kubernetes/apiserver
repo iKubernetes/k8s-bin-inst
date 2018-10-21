@@ -1,0 +1,42 @@
+###
+# kubernetes system config
+#
+# The following values are used to configure the kube-apiserver
+#
+
+# The address on the local server to listen to.
+KUBE_API_ADDRESS="--advertise-address=172.20.0.51"
+
+# The port on the local server to listen on.
+KUBE_API_PORT="--secure-port=6443 --insecure-port=0"
+
+# Comma separated list of nodes in the etcd cluster
+KUBE_ETCD_SERVERS="--etcd-servers=https://k8s-etcd01.magedu.com:2379,https://k8s-etcd02.magedu.com:2379,https://k8s-etcd03.magedu.com:2379"
+
+# Address range to use for services
+KUBE_SERVICE_ADDRESSES="--service-cluster-ip-range=10.96.0.0/12"
+
+# default admission control policies
+KUBE_ADMISSION_CONTROL="--enable-admission-plugins=NodeRestriction"
+
+# Add your own!
+KUBE_API_ARGS="--authorization-mode=Node,RBAC \
+    --client-ca-file=/etc/kubernetes/pki/ca.crt \
+    --enable-bootstrap-token-auth=true \
+    --etcd-cafile=/etc/etcd/pki/ca.crt \
+    --etcd-certfile=/etc/kubernetes/pki/apiserver-etcd-client.crt \
+    --etcd-keyfile=/etc/kubernetes/pki/apiserver-etcd-client.key \
+    --kubelet-client-certificate=/etc/kubernetes/pki/apiserver-kubelet-client.crt \
+    --kubelet-client-key=/etc/kubernetes/pki/apiserver-kubelet-client.key \
+    --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname \
+    --proxy-client-cert-file=/etc/kubernetes/pki/front-proxy-client.crt \
+    --proxy-client-key-file=/etc/kubernetes/pki/front-proxy-client.key \
+    --requestheader-allowed-names=front-proxy-client \
+    --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt \
+    --requestheader-extra-headers-prefix=X-Remote-Extra- \
+    --requestheader-group-headers=X-Remote-Group \
+    --requestheader-username-headers=X-Remote-User\
+    --service-account-key-file=/etc/kubernetes/pki/sa.pub \
+    --tls-cert-file=/etc/kubernetes/pki/apiserver.crt \
+    --tls-private-key-file=/etc/kubernetes/pki/apiserver.key \
+    --token-auth-file=/etc/kubernetes/token.csv"

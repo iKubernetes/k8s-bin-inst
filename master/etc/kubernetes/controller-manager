@@ -1,0 +1,22 @@
+###
+# The following values are used to configure the kubernetes controller-manager
+
+# defaults from config and apiserver should be adequate
+
+# Add your own!
+KUBE_CONTROLLER_MANAGER_ARGS="--bind-address=0.0.0.0 \
+    --allocate-node-cidrs=true \
+    --authentication-kubeconfig=/etc/kubernetes/auth/controller-manager.conf \
+    --authorization-kubeconfig=/etc/kubernetes/auth/controller-manager.conf \
+    --client-ca-file=/etc/kubernetes/pki/ca.crt \
+    --cluster-cidr=10.244.0.0/16 \
+    --cluster-signing-cert-file=/etc/kubernetes/pki/ca.crt \
+    --cluster-signing-key-file=/etc/kubernetes/pki/ca.key \
+    --controllers=*,bootstrapsigner,tokencleaner \
+    --kubeconfig=/etc/kubernetes/auth/controller-manager.conf \
+    --leader-elect=true \
+    --node-cidr-mask-size=24 \
+    --requestheader-client-ca-file=/etc/kubernetes/pki/front-proxy-ca.crt \
+    --root-ca-file=/etc/kubernetes/pki/ca.crt \
+    --service-account-private-key-file=/etc/kubernetes/pki/sa.key \
+    --use-service-account-credentials=true"
