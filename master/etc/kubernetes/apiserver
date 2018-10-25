@@ -5,13 +5,13 @@
 #
 
 # The address on the local server to listen to.
-KUBE_API_ADDRESS="--advertise-address=172.20.0.51"
+KUBE_API_ADDRESS="--advertise-address=0.0.0.0"
 
 # The port on the local server to listen on.
 KUBE_API_PORT="--secure-port=6443 --insecure-port=0"
 
 # Comma separated list of nodes in the etcd cluster
-KUBE_ETCD_SERVERS="--etcd-servers=https://k8s-etcd01.magedu.com:2379,https://k8s-etcd02.magedu.com:2379,https://k8s-etcd03.magedu.com:2379"
+KUBE_ETCD_SERVERS="--etcd-servers=https://k8s-etcd01:2379,https://k8s-etcd02:2379,https://k8s-etcd03:2379"
 
 # Address range to use for services
 KUBE_SERVICE_ADDRESSES="--service-cluster-ip-range=10.96.0.0/12"
