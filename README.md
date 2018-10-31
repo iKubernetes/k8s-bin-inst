@@ -61,5 +61,17 @@ kubernetes installation hard way.
 ~]# mkdir -p /opt/cni/bin    
 ~]# tar xf cni-plugins-amd64-v0.7.1.tgz -C /opt/cni/bin/
 
+2.启用ipvs内核模块
+
+创建内核模块载入相关的脚本文件/etc/sysconfig/modules/ipvs.modules，设定自动载入的内核模块。文件内容如下：
+
+    #!/bin/bash
+    ipvs_modules_dir="/usr/lib/modules/$(uname -r)/kernel/net/netfilter/ipvs"
+    for i in $(ls $ipvs_modules_dir | sed  -r 's@(.*).ko.xz@\1@'); do
+        /sbin/modinfo -F filename $i  &> /dev/null
+        if [ $? -eq 0 ]; then
+            /sbin/modprobe $i
+        fi
+    done
 
 
