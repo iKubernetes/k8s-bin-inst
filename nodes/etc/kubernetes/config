@@ -17,7 +17,3 @@ KUBE_LOG_LEVEL="--v=0"
 
 # Should this cluster be allowed to run privileged docker containers
 KUBE_ALLOW_PRIV="--allow-privileged=true"
-
-# How the controller-manager, scheduler, and proxy find the apiserver
-#KUBE_MASTER="--master=https://172.20.0.51:6443"
-#KUBE_MASTER="--master=https://mykube-api.magedu.com:6443"

@@ -4,7 +4,7 @@
 # defaults from config and apiserver should be adequate
 
 # Add your own!
-KUBE_CONTROLLER_MANAGER_ARGS="--bind-address=0.0.0.0 \
+KUBE_CONTROLLER_MANAGER_ARGS="--bind-address=127.0.0.1 \
     --allocate-node-cidrs=true \
     --authentication-kubeconfig=/etc/kubernetes/auth/controller-manager.conf \
     --authorization-kubeconfig=/etc/kubernetes/auth/controller-manager.conf \
