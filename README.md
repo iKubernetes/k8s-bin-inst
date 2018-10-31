@@ -9,10 +9,10 @@ kubernetes installation hard way.
 #### 配置参数
 编辑配置文件/etc/etcd/etcd.conf，设置以下参数为合适的值
 
-ETCD_DATA_DIR="/var/lib/etcd/k8s.etcd"
-ETCD_LISTEN_PEER_URLS：集群节点间通信监听的URL，例如"https://172.20.0.51:2380"；
-ETCD_LISTEN_CLIENT_URLS：向客户端提供服务所监听的URL，例如"https://172.20.0.51:2379"；
-ETCD_NAME：当前节点的名称，例如"k8s-etcd01.magedu.com"；
+* ETCD_DATA_DIR="/var/lib/etcd/k8s.etcd"
+* ETCD_LISTEN_PEER_URLS：集群节点间通信监听的URL，例如"https://172.20.0.51:2380"；
+* ETCD_LISTEN_CLIENT_URLS：向客户端提供服务所监听的URL，例如"https://172.20.0.51:2379"；
+* ETCD_NAME：当前节点的名称，例如"k8s-etcd01.magedu.com"；
 
 ETCD_INITIAL_ADVERTISE_PEER_URLS：此成员节点向etcd集群通告的URL，例如"https://k8s-etcd01.magedu.com:2380"；
 ETCD_ADVERTISE_CLIENT_URLS：此节点通告的用于向客户端提供服务的URL，例如"https://k8s-etcd01.magedu.com:2379"；
