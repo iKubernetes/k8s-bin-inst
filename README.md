@@ -30,6 +30,8 @@ kubernetes installation hard way.
 
 ## Master
 
+### 配置并启动服务
+
 1. 创建运行者用户及工作目录
 ~]# useradd -r kube
 
@@ -37,12 +39,16 @@ kubernetes installation hard way.
 ~]# chown kube.kube /var/run/kubernetes
 
 
-2. 配置kubectl
+~]# systemctl start kube-apiserver kube-controller-manager kube-scheduler
+
+
+### 配置kubectl
 
 ~]# mkdir $HOME/.kube
 ~]# cp /etc/kubernetes/auth/admin.conf $HOME/.kube/config
 
-3. 创建ClusterRoleBinding，授予用户相应操作所需要的权限：
+### 创建ClusterRoleBinding，授予用户相应操作所需要的权限：
+
 ~]# kubectl create clusterrolebinding system:bootstrapper --group=system:bootstrappers --clusterrole=system:bootstrapper
 或者：
 ~]# kubectl create clusterrolebinding system:bootstrapper --user=system:bootstrapper --clusterrole=system:node-bootstrapper
