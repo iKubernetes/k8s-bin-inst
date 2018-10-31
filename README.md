@@ -66,8 +66,8 @@ kubernetes installation hard way.
 创建内核模块载入相关的脚本文件/etc/sysconfig/modules/ipvs.modules，设定自动载入的内核模块。文件内容如下：
 
     #!/bin/bash
-    ipvs_modules_dir="/usr/lib/modules/$(uname -r)/kernel/net/netfilter/ipvs"
-    for i in $(ls $ipvs_modules_dir | sed  -r 's@(.*).ko.xz@\1@'); do
+    ipvs_mods_dir="/usr/lib/modules/$(uname -r)/kernel/net/netfilter/ipvs"
+    for i in $(ls $ipvs_mods_dir | grep -o "^[^.]*"); do
         /sbin/modinfo -F filename $i  &> /dev/null
         if [ $? -eq 0 ]; then
             /sbin/modprobe $i
